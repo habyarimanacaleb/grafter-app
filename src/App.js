@@ -5,6 +5,7 @@ import Animals from './pages/Animals';
 import Reviews from './pages/Reviews';
 import Booking from './pages/Booking';
 import Footer from './components/Footer';
+import './App.css';
 
 function App() {
   return (

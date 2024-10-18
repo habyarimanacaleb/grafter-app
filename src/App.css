@@ -50,8 +50,13 @@ body {
 }
 
 .container {
-  margin-top: 50px;
+  margin-top: 100px;
   padding: 20px;
+  text-align: center;
+  min-height: 50vh;
+  font-size: 5rem;
+  color: inherit;
+
 }
 
 h2 {
@@ -69,21 +74,28 @@ button {
 
 /* footer navigation */
 
-.footer-navigations a {
-  color: inherit; /* Ensures the default color of the link is inherited from the parent */
-  text-decoration: none; /* Removes underline by default */
+.footer-navigations a Button {
   transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth transition effect */
 }
 
-.footer-navigations a:hover {
+.footer-navigations a Button:hover {
   color: #FF6347; /* Change to your desired hover color, e.g., Tomato */
   text-decoration: underline; /* Adds an underline on hover */
-  text-decoration-color: black; /* Optional: specify the color of the underline */
+  text-decoration-color: rgb(0, 166, 255); /* Optional: specify the color of the underline */
+  text-decoration-thickness: 2px; /* Optional: specify the thickness of the underline */
+}
+.footer-informs a Button {
+  transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth transition effect */
+}
+
+.footer-informs a Button:hover {
+  color: #ff7347; /* Change to your desired hover color, e.g., Tomato */
+  text-decoration: underline; /* Adds an underline on hover */
+  text-decoration-color: rgb(0, 166, 255); /* Optional: specify the color of the underline */
   text-decoration-thickness: 2px; /* Optional: specify the thickness of the underline */
 }
 
 .footer-social-icons {
-  display: flex;
   gap: 16px; /* Space between icons */
 }
 
@@ -94,6 +106,18 @@ button {
 }
 
 .footer-social-icons a:hover {
-  color: #FF6347; /* Change to your desired hover color */
+  color: #47c2ff; /* Change to your desired hover color */
   transform: scale(1.2); /* Scale up the icon on hover */
+}
+
+/* Change display to block for small screens */
+@media (max-width: 600px) {
+  .footer-navigations h6{
+    text-align: center;
+  }
+  .footer-navigations a {
+    display: block; /* Stacks links vertically */
+    margin: 8px 0; /* Adds space between links */
+    text-align: center; /* Centers the text */
+  }
 }

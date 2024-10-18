@@ -20,7 +20,10 @@ const Footer = () => {
       <Container maxWidth="lg">
         <Grid container spacing={4}>
           {/* Navigation Links */}
-          <Grid item xs={12} md={4} className="footer-navigations">
+          <Grid item xs={12} md={4} className="footer-navigations" sx={{
+            sm:{display:'block'},
+            md:{display:'flex'}
+          }}>
             <Typography variant="h6" gutterBottom>
               Navigation
             </Typography>
@@ -70,7 +73,7 @@ const Footer = () => {
           </Grid>
 
           {/* FAQs and Policies */}
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={4} className="footer-informs">
             <Typography variant="h6" gutterBottom>
               Information
             </Typography>
