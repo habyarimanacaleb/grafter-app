@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+/*
+This codes below indicating the
+page/Home.js 
+styles
+ */
+
+body {
+  background-color: #f0f4f7; /* Light background for better readability */
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  margin-top: 50px;
+  padding: 20px;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 3rem;
+  color: #388e3c;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+}
