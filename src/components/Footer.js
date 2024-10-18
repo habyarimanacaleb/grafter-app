@@ -10,6 +10,7 @@ const Footer = () => {
   return (
     <Box
       sx={{
+        borderTop:'black 2px',
         backgroundColor: "#f8f8f8",
         padding: 4,
         marginTop: "auto",
