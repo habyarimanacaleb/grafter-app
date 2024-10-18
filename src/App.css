@@ -65,3 +65,35 @@ button {
   font-size: 1.2rem;
   border-radius: 8px;
 }
+
+
+/* footer navigation */
+
+.footer-navigations a {
+  color: inherit; /* Ensures the default color of the link is inherited from the parent */
+  text-decoration: none; /* Removes underline by default */
+  transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth transition effect */
+}
+
+.footer-navigations a:hover {
+  color: #FF6347; /* Change to your desired hover color, e.g., Tomato */
+  text-decoration: underline; /* Adds an underline on hover */
+  text-decoration-color: black; /* Optional: specify the color of the underline */
+  text-decoration-thickness: 2px; /* Optional: specify the thickness of the underline */
+}
+
+.footer-social-icons {
+  display: flex;
+  gap: 16px; /* Space between icons */
+}
+
+.footer-social-icons a {
+  color: inherit; /* Default color */
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition effect */
+  font-size: 2rem; /* Adjust size as needed */
+}
+
+.footer-social-icons a:hover {
+  color: #FF6347; /* Change to your desired hover color */
+  transform: scale(1.2); /* Scale up the icon on hover */
+}

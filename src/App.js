@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Animals from './pages/Animals';
 import Reviews from './pages/Reviews';
 import Booking from './pages/Booking';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/booking" element={<Booking />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

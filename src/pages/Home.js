@@ -4,7 +4,7 @@ import { motion } from "framer-motion"; // Import framer-motion
 
 const Home = () => {
   return (
-    <Container>
+    <Container maxWidth="lg" sx={{ padding: 4 }}>
       {/* Animated Welcome Text */}
       <motion.div
         initial={{ opacity: 0, y: -35 }} // Start hidden and move up
@@ -31,9 +31,10 @@ const Home = () => {
       {/* Sections with Call-to-Action Buttons */}
       <Grid
         container
-        spacing={4}
-        justifyContent="center"
-        style={{ marginTop: "30px" }}
+        spacing={2}
+        justifyContent="center" // Centers the content horizontally
+        alignItems="center" // Centers the content vertically
+        style={{ minHeight: '25vh',marginTop: "30px" }} // Ensures it takes at least 80% of viewport height
       >
         <Grid item xs={12} sm={6} md={4}>
           <motion.div
@@ -47,7 +48,7 @@ const Home = () => {
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
           <motion.div
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
             <Button variant="contained" color="secondary" fullWidth>
