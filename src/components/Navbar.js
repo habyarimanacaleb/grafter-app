@@ -55,14 +55,15 @@ const Navbar = () => {
       position="static"
       color={scrolled ? "primary" : "transparent"}
       style={{
-        color:'white',
+        color: "white",
         transition: "0.5s ease",
         boxShadow: scrolled ? "0px 2px 10px rgba(0, 0, 0, 0.2)" : "none",
-        background: 'linear-gradient(90deg, rgba(128,128,128,1) 0%, rgba(169,169,169,1) 100%)'
+        background:
+          "linear-gradient(90deg, rgba(128,128,128,1) 0%, rgba(169,169,169,1) 100%)",
       }}
     >
       <Toolbar>
-        <ForestIcon style={{ marginRight: 8, fontSize:'50px' }} />
+        <ForestIcon style={{ marginRight: 8, fontSize: "50px" }} />
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Akagera National Park
         </Typography>
@@ -85,6 +86,10 @@ const Navbar = () => {
               anchor="left"
               open={drawerOpen}
               onClose={() => toggleDrawer(false)}
+              sx={{
+                width: "100%",
+                padding: "10px",
+              }}
             >
               <List>
                 {navLinks.map((item, index) => (
