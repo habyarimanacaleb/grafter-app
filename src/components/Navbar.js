@@ -63,7 +63,7 @@ const Navbar = () => {
       }}
     >
       <Toolbar>
-        <ForestIcon style={{ marginRight: 8, fontSize: "50px" }} />
+        <ForestIcon style={{ marginRight: 8, fontSize: "50px" }} component={Link}  to='/'/>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Akagera National Park
         </Typography>
@@ -86,6 +86,7 @@ const Navbar = () => {
               anchor="left"
               open={drawerOpen}
               onClose={() => toggleDrawer(false)}
+              aria-label="Main Navigation-menu"
               sx={{
                 width: "100%",
                 padding: "10px",
@@ -108,7 +109,6 @@ const Navbar = () => {
             </Drawer>
           </>
         ) : (
-          // Desktop navigation links
           <div>
             {navLinks.map((item, index) => (
               <Button
@@ -119,11 +119,11 @@ const Navbar = () => {
                 sx={{
                   marginLeft: 2,
                   fontWeight:
-                    location.pathname === item.path ? "bold" : "normal", // Highlight active link
+                    location.pathname === item.path ? "bold" : "normal", 
                   borderBottom:
                     location.pathname === item.path
                       ? "2px solid white"
-                      : "none", // Underline active link
+                      : "none", 
                   transition: "border-bottom 0.3s ease",
                 }}
               >
