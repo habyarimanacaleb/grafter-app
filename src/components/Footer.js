@@ -13,7 +13,7 @@ const Footer = () => {
         borderTop:'black 2px',
         backgroundColor: "#f8f8f8",
         padding: 4,
-        marginTop: "auto",
+        marginTop: "50px",
         background:
           "linear-gradient(90deg, rgba(128,128,128,1) 0%, rgba(169,169,169,1) 100%)",
       }}

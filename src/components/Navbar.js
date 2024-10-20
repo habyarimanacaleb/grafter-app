@@ -63,7 +63,15 @@ const Navbar = () => {
       }}
     >
       <Toolbar>
-        <ForestIcon style={{ marginRight: 8, fontSize: "50px" }} component={Link}  to='/'/>
+        <ForestIcon
+          style={{
+            marginRight: 8,
+            fontSize: "60px",
+            color: "white",
+          }}
+          component={Link}
+          to="/"
+        />
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Akagera National Park
         </Typography>
@@ -119,11 +127,11 @@ const Navbar = () => {
                 sx={{
                   marginLeft: 2,
                   fontWeight:
-                    location.pathname === item.path ? "bold" : "normal", 
+                    location.pathname === item.path ? "bold" : "normal",
                   borderBottom:
                     location.pathname === item.path
                       ? "2px solid white"
-                      : "none", 
+                      : "none",
                   transition: "border-bottom 0.3s ease",
                 }}
               >

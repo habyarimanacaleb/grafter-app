@@ -106,9 +106,13 @@ const Reviews = () => {
         {reviews.map((review, index) => (
           <Card key={index} sx={{ mb: 2 }}>
             <CardContent>
-              <Typography variant="h6">{review.name}</Typography>
-              <Rating name="read-only" value={review.rating} readOnly />
-              <Typography variant="body2" color="text.secondary">
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                <Typography variant="h6" sx={{ flexGrow: 1 }}>
+                  {review.name}
+                </Typography>
+                <Rating name="read-only" value={review.rating} readOnly />
+              </Box>
+              <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
                 {review.comment}
               </Typography>
             </CardContent>

@@ -1,96 +1,109 @@
 import React, { useState } from "react";
-import { Container, Typography, TextField, Button, Box, Grid } from "@mui/material";
-import Map from '../components/Map'; // Assuming you have a Map component for location
+import {
+  Container,
+  Typography,
+  TextField,
+  Button,
+  Box,
+  Grid,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
 
 const Booking = () => {
-  const [formData, setFormData] = useState({
-    accommodation: "",
-    checkIn: "",
-    checkOut: "",
-    guests: 1,
-  });
+  const [selectedHotel, setSelectedHotel] = useState("");
+  const [name, setName] = useState("");
+  const [checkInDate, setCheckInDate] = useState("");
+  const [checkOutDate, setCheckOutDate] = useState("");
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  const handleHotelChange = (event) => {
+    setSelectedHotel(event.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Booking Submitted", formData);
-    // Handle booking submission logic here
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Handle the booking submission logic here
+    console.log("Booking details:", {
+      name,
+      selectedHotel,
+      checkInDate,
+      checkOutDate,
+    });
   };
 
   return (
     <Container sx={{ marginTop: 4 }}>
       <Typography variant="h3" align="center" gutterBottom>
-        Book Your Adventure
+        Book Your Stay
       </Typography>
-      
       <Box component="form" onSubmit={handleSubmit} sx={{ mt: 4 }}>
-        <Grid container spacing={4}>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              label="Your Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <FormControl fullWidth required>
+              <InputLabel id="hotel-select-label">Select Hotel/Lodge</InputLabel>
+              <Select
+                labelId="hotel-select-label"
+                value={selectedHotel}
+                onChange={handleHotelChange}
+                label="Select Hotel/Lodge"
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value="Akagera Lodge">Akagera Lodge</MenuItem>
+                <MenuItem value="Mantis Akagera Game Lodge">Mantis Akagera Game Lodge</MenuItem>
+                <MenuItem value="Kigali Serena Hotel">Kigali Serena Hotel</MenuItem>
+                <MenuItem value="Nyungwe House">Nyungwe House</MenuItem>
+                {/* Add more hotel/lodge options as needed */}
+              </Select>
+            </FormControl>
+          </Grid>
           <Grid item xs={12} md={6}>
             <TextField
               fullWidth
-              label="Accommodation Type"
-              name="accommodation"
-              value={formData.accommodation}
-              onChange={handleInputChange}
-              required
-            />
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <TextField
-              fullWidth
-              label="Check-in Date"
+              label="Check-In Date"
               type="date"
-              name="checkIn"
-              value={formData.checkIn}
-              onChange={handleInputChange}
+              value={checkInDate}
+              onChange={(e) => setCheckInDate(e.target.value)}
+              InputLabelProps={{
+                shrink: true,
+              }}
               required
-              InputLabelProps={{ shrink: true }}
             />
           </Grid>
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={6}>
             <TextField
               fullWidth
-              label="Check-out Date"
+              label="Check-Out Date"
               type="date"
-              name="checkOut"
-              value={formData.checkOut}
-              onChange={handleInputChange}
+              value={checkOutDate}
+              onChange={(e) => setCheckOutDate(e.target.value)}
+              InputLabelProps={{
+                shrink: true,
+              }}
               required
-              InputLabelProps={{ shrink: true }}
-            />
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <TextField
-              fullWidth
-              label="Number of Guests"
-              type="number"
-              name="guests"
-              value={formData.guests}
-              onChange={handleInputChange}
-              required
-              InputProps={{ inputProps: { min: 1 } }}
             />
           </Grid>
         </Grid>
-
         <Button
           variant="contained"
           color="primary"
           type="submit"
           sx={{ mt: 3 }}
         >
-          Confirm Booking
+          Submit Booking
         </Button>
-      </Box>
-
-      {/* Display a map with locations */}
-      <Box sx={{ mt: 5 }}>
-        <Typography variant="h5">Available Accommodations</Typography>
-        <Map />
       </Box>
     </Container>
   );
