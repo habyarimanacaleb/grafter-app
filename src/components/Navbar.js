@@ -10,7 +10,7 @@ import {
   ListItem,
   ListItemText,
 } from "@mui/material";
-import ForestIcon from "@mui/icons-material/Forest";
+import ForestIcon from "@mui/icons-material/Forest"; // Correctly importing the ForestIcon
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useLocation } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery"; // For responsiveness
@@ -29,11 +29,7 @@ const Navbar = () => {
   // Scroll effect to change navbar appearance
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50); // Simplified
     };
     window.addEventListener("scroll", handleScroll);
 
@@ -63,16 +59,22 @@ const Navbar = () => {
       }}
     >
       <Toolbar>
-        <ForestIcon
-          style={{
-            marginRight: 8,
-            fontSize: "60px",
-            color: "white",
-          }}
-          component={Link}
+        <IconButton
+          edge="start" // Place this on IconButton to position it correctly
+          component={Link} // Ensure it links to the home page
           to="/"
-        />
-        <img src="/images/logo.png" alt="This is Logo" style={{width:"80px", height:'80px',paddingRight:'10px'}} component={Link} to='/'/>
+          sx={{
+            color: "white", // Set icon color to white for visibility
+            borderRadius: "50%", // Make it circular
+            padding: 1, // Add padding for better appearance
+            "&:hover": {
+              backgroundColor: "rgba(0, 0, 0, 0.8)", // Darker background on hover
+            },
+          }}
+        >
+          <ForestIcon style={{ fontSize: "60px" }} /> {/* Increased size for better visibility */}
+        </IconButton>
+
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Akagera National Park
         </Typography>
