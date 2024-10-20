@@ -72,6 +72,7 @@ const Navbar = () => {
           component={Link}
           to="/"
         />
+        <img src="/images/logo.png" alt="This is Logo" style={{width:"80px", height:'80px',paddingRight:'10px'}} component={Link} to='/'/>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Akagera National Park
         </Typography>
