@@ -42,7 +42,7 @@ const Home = () => {
         spacing={2}
         justifyContent="center" // Centers the content horizontally
         alignItems="center" // Centers the content vertically
-        style={{ minHeight: '35vh', marginTop: "30px" }} // Ensures it takes at least 35% of viewport height
+        style={{ minHeight: '35vh', marginTop: "10px" }} // Ensures it takes at least 35% of viewport height
       >
         <Grid item xs={12} sm={6} md={4}>
           <motion.div variants={buttonVariants} whileHover="hover" initial="initial">
