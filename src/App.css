@@ -121,3 +121,13 @@ button {
     text-align: center; /* Centers the text */
   }
 }
+
+@media screen and (max-width: 510px) {
+  .logo_icon{
+    display: none;
+  }
+}
+
+.topspace{
+  margin-top: 70px;
+}

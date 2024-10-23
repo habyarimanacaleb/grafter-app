@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Typography, Grid, Button, Box } from "@mui/material";
-import { motion } from "framer-motion"; // Import framer-motion
+import { motion } from "framer-motion"; 
+import { Link } from "react-router-dom";
 
 const buttonVariants = {
   initial: { scale: 1 },
@@ -9,7 +10,7 @@ const buttonVariants = {
 
 const Home = () => {
   return (
-    <Container maxWidth="lg" sx={{ padding: 4 }}>
+    <Container maxWidth="lg" sx={{ padding: 3}}>
       {/* Animated Welcome Text */}
       <motion.div
         initial={{ opacity: 0, y: -35 }} // Start hidden and move up
@@ -17,7 +18,7 @@ const Home = () => {
         transition={{ duration: 1 }} // Animation duration
       >
         <Typography variant="h2" gutterBottom align="center" color="primary">
-          Welcome to Akagera National Park
+          Welcome to Grafter  Park
         </Typography>
       </motion.div>
 
@@ -45,22 +46,22 @@ const Home = () => {
         style={{ minHeight: '35vh', marginTop: "10px" }} // Ensures it takes at least 35% of viewport height
       >
         <Grid item xs={12} sm={6} md={4}>
-          <motion.div variants={buttonVariants} whileHover="hover" initial="initial">
-            <Button variant="contained" color="primary" fullWidth>
+          <motion.div variants={buttonVariants}  initial="initial">
+            <Button variant="contained" color="primary" fullWidth component={Link} to='/plan-your-visit'>
               Plan Your Visit
             </Button>
           </motion.div>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
-          <motion.div variants={buttonVariants} whileHover="hover" initial="initial">
-            <Button variant="contained" color="secondary" fullWidth>
+          <motion.div variants={buttonVariants}  initial="initial">
+            <Button variant="contained" color="secondary" fullWidth component={Link} to='/explore-wildlife'>
               Explore the Wildlife
             </Button>
           </motion.div>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
-          <motion.div variants={buttonVariants} whileHover="hover" initial="initial">
-            <Button variant="contained" color="success" fullWidth>
+          <motion.div variants={buttonVariants}  initial="initial">
+            <Button variant="contained" color="success" fullWidth component={Link} to='/book-your-stay'>
               Book Your Stay
             </Button>
           </motion.div>
@@ -87,9 +88,9 @@ const Home = () => {
           Join Us for an Unforgettable Adventure!
         </motion.h3>
         <Typography variant="body1" paragraph>
-          Whether you are a wildlife enthusiast, a nature lover, or just looking to unwind, Akagera National Park offers the perfect escape.
+          Whether you are a wildlife enthusiast, a nature lover, or just looking to unwind, Grafter  Park offers the perfect escape.
         </Typography>
-        <motion.div variants={buttonVariants} whileHover="hover" initial="initial">
+        <motion.div variants={buttonVariants}  initial="initial">
           <Button variant="contained" color="warning">
             Learn More
           </Button>

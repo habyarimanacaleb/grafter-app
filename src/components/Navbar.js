@@ -9,36 +9,43 @@ import {
   List,
   ListItem,
   ListItemText,
+  Divider,
+  ListItemIcon,
+  ListItemButton,
 } from "@mui/material";
-import ForestIcon from "@mui/icons-material/Forest"; // Correctly importing the ForestIcon
+import ForestIcon from "@mui/icons-material/Forest";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useLocation } from "react-router-dom";
-import useMediaQuery from "@mui/material/useMediaQuery"; // For responsiveness
+import useMediaQuery from "@mui/material/useMediaQuery";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import InboxIcon from "@mui/icons-material/Inbox";
+import MailIcon from "@mui/icons-material/Mail";
+import { useTheme } from "@mui/material/styles";
+
+const drawerWidth = 240; // Drawer width
 
 const Navbar = () => {
-  const location = useLocation(); // To track the active route
-  const isMobile = useMediaQuery("(max-width:600px)"); // Mobile view detection
-  const [drawerOpen, setDrawerOpen] = useState(false); // State for Drawer
-  const [scrolled, setScrolled] = useState(false); // State for scroll effect
+  const location = useLocation();
+  const isMobile = useMediaQuery("(max-width:600px)");
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const theme = useTheme(); // Get theme for directional icons
 
-  // Toggle Drawer for mobile menu
   const toggleDrawer = (open) => {
     setDrawerOpen(open);
   };
 
-  // Scroll effect to change navbar appearance
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50); // Simplified
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  // Links for navigation
   const navLinks = [
     { title: "Home", path: "/" },
     { title: "Animals", path: "/animals" },
@@ -48,7 +55,7 @@ const Navbar = () => {
 
   return (
     <AppBar
-      position="static"
+      position="fixed"
       color={scrolled ? "primary" : "transparent"}
       style={{
         color: "white",
@@ -59,61 +66,100 @@ const Navbar = () => {
       }}
     >
       <Toolbar>
-        <IconButton
-          edge="start" // Place this on IconButton to position it correctly
-          component={Link} // Ensure it links to the home page
-          to="/"
-          sx={{
-            color: "white", // Set icon color to white for visibility
-            borderRadius: "50%", // Make it circular
-            padding: 1, // Add padding for better appearance
-            "&:hover": {
-              backgroundColor: "rgba(0, 0, 0, 0.8)", // Darker background on hover
-            },
-          }}
-        >
-          <ForestIcon style={{ fontSize: "60px" }} /> {/* Increased size for better visibility */}
-        </IconButton>
+        {/* MenuIcon for mobile devices */}
+        {isMobile ? (
+          <IconButton
+            edge="start"
+            color="inherit"
+            size="25px"
+            aria-label="menu"
+            onClick={() => toggleDrawer(true)} // Open drawer
+          >
+            <MenuIcon />
+          </IconButton>
+        ) : (
+          /* Show Logo (ForestIcon) only on larger screens */
+          <IconButton
+            edge="start"
+            component={Link}
+            to="/"
+            sx={{
+              color: "white",
+              borderRadius: "50%",
+              padding: 1,
+              "&:hover": {
+                backgroundColor: "rgba(0, 0, 0, 0.8)",
+              },
+            }}
+            className="logo_icon"
+          >
+            <ForestIcon style={{ fontSize: "60px" }} />
+          </IconButton>
+        )}
 
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Akagera National Park
+          Grafter Park
         </Typography>
 
         {isMobile ? (
           <>
-            {/* Mobile Menu Button */}
-            <IconButton
-              edge="start"
-              color="inherit"
-              size="25px"
-              aria-label="menu"
-              onClick={() => toggleDrawer(true)}
-            >
-              <MenuIcon />
-            </IconButton>
-
             {/* Drawer for Mobile Menu */}
             <Drawer
+              sx={{
+                width: drawerWidth,
+                flexShrink: 0,
+                "& .MuiDrawer-paper": {
+                  width: drawerWidth,
+                  boxSizing: "border-box",
+                },
+              }}
+              variant="temporary"
               anchor="left"
               open={drawerOpen}
-              onClose={() => toggleDrawer(false)}
-              aria-label="Main Navigation-menu"
-              sx={{
-                width: "100%",
-                padding: "10px",
-              }}
+              onClose={() => toggleDrawer(false)} // Close drawer
             >
+              <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                <IconButton onClick={() => toggleDrawer(false)}>
+                  {theme.direction === "ltr" ? (
+                    <ChevronLeftIcon />
+                  ) : (
+                    <ChevronRightIcon />
+                  )}
+                </IconButton>
+              </div>
+
+              <Divider />
               <List>
                 {navLinks.map((item, index) => (
                   <ListItem
-                    button
                     key={index}
+                    disablePadding
                     component={Link}
                     to={item.path}
                     onClick={() => toggleDrawer(false)}
                     selected={location.pathname === item.path}
                   >
-                    <ListItemText primary={item.title} />
+                    <ListItemButton>
+                      <ListItemIcon>
+                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                      </ListItemIcon>
+                      <ListItemText primary={item.title} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+              </List>
+
+              <Divider />
+
+              <List>
+                {["All mail", "Trash", "Spam"].map((text, index) => (
+                  <ListItem key={text} disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>
+                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                      </ListItemIcon>
+                      <ListItemText primary={text} />
+                    </ListItemButton>
                   </ListItem>
                 ))}
               </List>

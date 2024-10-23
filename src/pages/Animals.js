@@ -31,7 +31,6 @@ const animals = [
   },
   // Add more animals as needed...
 ];
-
 const Animals = () => {
   const handleLearnMore = (animal) => {
     // Function to handle "Learn More" click
